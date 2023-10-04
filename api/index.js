@@ -61,6 +61,10 @@ app.use(
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
+    cookie: {
+      sameSite: "none",
+      secure: true,
+    },
   }),
 );
 
