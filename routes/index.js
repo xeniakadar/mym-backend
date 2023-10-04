@@ -1,5 +1,6 @@
-var express = require("express");
-var router = express.Router();
+const express = require("express");
+const router = express.Router();
+const passport = require("passport");
 const user_controller = require("../controllers/userController");
 const nasa_controller = require("../controllers/nasaController");
 
