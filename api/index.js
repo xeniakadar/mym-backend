@@ -12,6 +12,7 @@ mongoose.set("strictQuery", false);
 const User = require("../models/user");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const session = require("express-session");
 const RateLimit = require("express-rate-limit");
 const compression = require("compression");
@@ -69,7 +70,33 @@ app.use(
 );
 
 app.use(express.urlencoded({ extended: false }));
+// google OAUTH
+passport.use(
+  new GoogleStrategy(
+    {
+      clientID: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      callbackURL: "http://127.0.0.1:5173/auth/google/callback",
+    },
+    async (accessToken, refreshToken, profile, cb) => {
+      let user = await User.findOne({ googleId: profile.id });
+      if (!user) {
+        user = new User({
+          googleId: profile.id,
+          displayName: `${profile.name.givenName} ${profile.name.familyName}`,
+          firstName: profile.name.givenName,
+          lastName: profile.name.familyName,
+          email: profile.emails[0].value,
+          image: profile.photos[0].value,
+        });
+        await user.save();
+      }
+      return cb(null, user);
+    },
+  ),
+);
 
+// email/password
 passport.use(
   new LocalStrategy(async (username, password, done) => {
     try {
