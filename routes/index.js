@@ -25,15 +25,6 @@ router.get(
   "/auth/google/callback",
   passport.authenticate("google", { failureRedirect: "/login" }),
   function (req, res) {
-    // Successful authentication, redirect home or wherever you want.
-    res.redirect("/");
-  },
-);
-
-router.get(
-  "/auth/google/callback",
-  passport.authenticate("google", { failureRedirect: "/login" }),
-  function (req, res) {
     // Here the user has been authenticated by Google
     const body = {
       _id: req.user._id,
