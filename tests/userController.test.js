@@ -1,6 +1,6 @@
 const request = require("supertest");
 const express = require("express");
-const app = require("../app");
+const app = require("../api");
 const mongoose = require("mongoose");
 const User = require("../models/user");
 

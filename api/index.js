@@ -9,7 +9,7 @@ const bcrypt = require("bcryptjs");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
-const User = require("./models/user");
+const User = require("../models/user");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const session = require("express-session");
@@ -17,7 +17,7 @@ const RateLimit = require("express-rate-limit");
 const compression = require("compression");
 const helmet = require("helmet");
 
-const indexRouter = require("./routes/index");
+const indexRouter = require("../routes/index");
 
 const app = express();
 
@@ -32,8 +32,8 @@ db.on("error", console.error.bind(console, "mongo connection error"));
 app.use(cors());
 
 // general middleware
-// app.use(compression());
-// app.use(helmet());
+app.use(compression());
+app.use(helmet());
 
 // parsing request
 app.use(bodyParser.urlencoded({ extended: false }));
