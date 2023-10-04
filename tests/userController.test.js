@@ -32,7 +32,7 @@ describe("User Registration and Login", () => {
 
   it("should login a registered user", async () => {
     const res = await request(app).post("/api/login").send({
-      username: "testuser",
+      username: "testuser_0.7514189127435549",
       password: "Test@1234",
     });
     expect(res.statusCode).toEqual(200);
