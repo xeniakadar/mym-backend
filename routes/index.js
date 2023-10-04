@@ -17,7 +17,7 @@ router.get("/api/nasa-daily-image", nasa_controller.get_daily_image);
 router.get(
   "/auth/google",
   passport.authenticate("google", {
-    scope: ["https://www.googleapis.com/auth/plus.login"],
+    scope: ["email", "profile"],
   }),
 );
 
@@ -36,6 +36,14 @@ router.get(
     });
     // Return the token or set it in a cookie or however you wish to handle
     res.json({ token });
+  },
+);
+
+router.get(
+  "/profile",
+  passport.authenticate("jwt", { session: false }),
+  (req, res, next) => {
+    res.send("Welcome");
   },
 );
 
