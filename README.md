@@ -10,6 +10,7 @@ Backend API for MYM Assessment which handles authentication, user data, and addi
 **ORM:** Mongoose \
 **Authentication:** Passport.js (Local and Google OAuth2.0 strategies) \
 **Deployment:** Vercel Serverless Functions \
+**Testing:** Jest \
 
 ## Features
 
@@ -62,6 +63,14 @@ GET /auth/google/callback - Callback endpoint for Google OAuth2.0. \
 # Other:
 
 GET /api/nasa-daily-image - Fetch daily image from NASA.
+
+## Testing
+
+Testing is a crucial part of this backend to ensure its reliability and stability. The tests have been written using Jest. To run the tests:
+
+`npm test` \
+
+Ensure that you have set up the necessary environment for testing, including test databases if required.
 
 ## Acknowledgements
 
