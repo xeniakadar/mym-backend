@@ -1,4 +1,4 @@
-### Backend for MYM Project
+# Backend for MYM Project
 
 Backend API for MYM Assessment which handles authentication, user data, and additional features.
 
@@ -53,14 +53,14 @@ Deployed on Vercel as a serverless function.
 
 ## Endpoints
 
-# Authentication:
+### Authentication:
 
 POST /api/login - Login using local strategy. \
 POST /api/signup - Sign up for a new account. \
 GET /auth/google - Start Google OAuth2.0 authentication flow. \
 GET /auth/google/callback - Callback endpoint for Google OAuth2.0. \
 
-# Other:
+### Other:
 
 GET /api/nasa-daily-image - Fetch daily image from NASA.
 
