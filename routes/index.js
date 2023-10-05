@@ -35,7 +35,6 @@ router.get(
   "/auth/google/callback",
   passport.authenticate("google", { failureRedirect: "/" }),
   function (req, res) {
-    // Here the user has been authenticated by Google
     const body = {
       _id: req.user._id,
       username: req.user.username,
@@ -44,7 +43,6 @@ router.get(
     const token = jwt.sign({ user: body }, process.env.SECRET, {
       expiresIn: "1h",
     });
-    // Return the token or set it in a cookie or however you wish to handle
     res.json({ token });
   },
 );
