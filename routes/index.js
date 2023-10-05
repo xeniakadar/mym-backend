@@ -14,44 +14,44 @@ router.post("/api/signup", user_controller.user_signup);
 
 router.get("/api/nasa-daily-image", nasa_controller.get_daily_image);
 
-// router.get(
-//   "/auth/google",
-//   passport.authenticate("google", {
-//     scope: ["email", "profile"],
-//   }),
-// );
+router.get(
+  "/auth/google",
+  passport.authenticate("google", {
+    scope: ["email", "profile"],
+  }),
+);
 
-// router.get(
-//   "/auth/google/callback",
-//   passport.authenticate("google", { failureRedirect: "/login" }),
-//   function (req, res) {
-//     // Here the user has been authenticated by Google
-//     const body = {
-//       _id: req.user._id,
-//       username: req.user.username,
-//       email: req.user.email,
-//     };
-//     const token = jwt.sign({ user: body }, process.env.SECRET, {
-//       expiresIn: "1h",
-//     });
-//     // Return the token or set it in a cookie or however you wish to handle
-//     res.json({ token });
-//   },
-// );
+router.get(
+  "/auth/google/callback",
+  passport.authenticate("google", { failureRedirect: "/login" }),
+  function (req, res) {
+    // Here the user has been authenticated by Google
+    const body = {
+      _id: req.user._id,
+      username: req.user.username,
+      email: req.user.email,
+    };
+    const token = jwt.sign({ user: body }, process.env.SECRET, {
+      expiresIn: "1h",
+    });
+    // Return the token or set it in a cookie or however you wish to handle
+    res.json({ token });
+  },
+);
 
-// router.get(
-//   "/profile",
-//   passport.authenticate("jwt", { session: false }),
-//   (req, res, next) => {
-//     res.send("Welcome");
-//   },
-// );
+router.get(
+  "/profile",
+  passport.authenticate("jwt", { session: false }),
+  (req, res, next) => {
+    res.send("Welcome");
+  },
+);
 
-// router.get("/logout", (req, res) => {
-//   req.logout();
-//   req.session.destroy(() => {
-//     res.redirect("/");
-//   });
-// });
+router.get("/logout", (req, res) => {
+  req.logout();
+  req.session.destroy(() => {
+    res.redirect("/");
+  });
+});
 
 module.exports = router;
