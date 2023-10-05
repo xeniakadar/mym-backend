@@ -33,7 +33,7 @@ router.get("/auth/google/callback", (req, res, next) => {
 
 router.get(
   "/auth/google/callback",
-  passport.authenticate("google", { failureRedirect: "/login" }),
+  passport.authenticate("google", { failureRedirect: "/" }),
   function (req, res) {
     // Here the user has been authenticated by Google
     const body = {
@@ -49,13 +49,13 @@ router.get(
   },
 );
 
-router.get(
-  "/profile",
-  passport.authenticate("jwt", { session: false }),
-  (req, res, next) => {
-    res.send("Welcome");
-  },
-);
+// router.get(
+//   "/profile",
+//   passport.authenticate("jwt", { session: false }),
+//   (req, res, next) => {
+//     res.send("Welcome");
+//   },
+// );
 
 router.get("/logout", (req, res) => {
   req.logout();

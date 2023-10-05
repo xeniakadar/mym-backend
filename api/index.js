@@ -65,8 +65,7 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "/auth/google/callback",
-      passReqToCallback: true,
+      callbackURL: "/api/auth/google/callback",
     },
     async (accessToken, refreshToken, profile, cb) => {
       let user = await User.findOne({ googleId: profile.id });
