@@ -4,35 +4,35 @@ Backend API for MYM Assessment which handles authentication, user data, and addi
 
 ## Tech Stack
 
-**Platform:** Node.js
-**Framework:** Express.js
-**Database:** MongoDB
-**ORM:** Mongoose
-**Authentication:** Passport.js (Local and Google OAuth2.0 strategies)
-**Deployment:** Vercel Serverless Functions
+**Platform:** Node.js \
+**Framework:** Express.js \
+**Database:** MongoDB \
+**ORM:** Mongoose \
+**Authentication:** Passport.js (Local and Google OAuth2.0 strategies) \
+**Deployment:** Vercel Serverless Functions \
 
 ## Features
 
 **Authentication:**
 
-Local authentication using username and password
-Google authentication using Google OAuth2.0
-Rate Limiting: Utilizes express-rate-limit for basic rate limiting.
+Local authentication using username and password \
+Google authentication using Google OAuth2.0 \
+Rate Limiting: Utilizes express-rate-limit for basic rate limiting. \
 
-**Security:** Uses `helmet` for setting HTTP headers securely.
-Utilizes `bcryptjs` for password hashing and verification.
-**Logging:** Uses morgan for logging HTTP requests.
-**Data Parsing:** `body-parser` for parsing incoming request bodies.
-**Error Handling:** Custom error handling for 404 and other server errors.
+**Security:** Uses `helmet` for setting HTTP headers securely. \
+Utilizes `bcryptjs` for password hashing and verification. \
+**Logging:** Uses morgan for logging HTTP requests. \
+**Data Parsing:** `body-parser` for parsing incoming request bodies. \
+**Error Handling:** Custom error handling for 404 and other server errors. \
 
 ## Environment Variables
 
 To run this project, you need to set up the following environment variables:
 
-GOOGLE_CLIENT_ID: Your Google OAuth2.0 client ID
-GOOGLE_CLIENT_SECRET: Your Google OAuth2.0 client secret
-SECRET: Secret key for session handling and JWT signing
-MONGODB_URI: MongoDB connection string
+GOOGLE_CLIENT_ID: Your Google OAuth2.0 client ID \
+GOOGLE_CLIENT_SECRET: Your Google OAuth2.0 client secret \
+SECRET: Secret key for session handling and JWT signing \
+MONGODB_URI: MongoDB connection string \
 
 ## Local Development
 
@@ -54,10 +54,10 @@ Deployed on Vercel as a serverless function.
 
 # Authentication:
 
-POST /api/login - Login using local strategy.
-POST /api/signup - Sign up for a new account.
-GET /auth/google - Start Google OAuth2.0 authentication flow.
-GET /auth/google/callback - Callback endpoint for Google OAuth2.0.
+POST /api/login - Login using local strategy. \
+POST /api/signup - Sign up for a new account. \
+GET /auth/google - Start Google OAuth2.0 authentication flow. \
+GET /auth/google/callback - Callback endpoint for Google OAuth2.0. \
 
 # Other:
 
