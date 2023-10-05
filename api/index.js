@@ -65,8 +65,7 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL:
-        "https://mym-backend-lgot0fken-xeniakadars-projects.vercel.app/auth/google/callback",
+      callbackURL: "/auth/google/callback",
       passReqToCallback: true,
     },
     async (accessToken, refreshToken, profile, cb) => {
