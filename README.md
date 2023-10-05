@@ -10,7 +10,7 @@ Backend API for MYM Assessment which handles authentication, user data, and addi
 **ORM:** Mongoose \
 **Authentication:** Passport.js (Local and Google OAuth2.0 strategies) \
 **Deployment:** Vercel Serverless Functions \
-**Testing:** Jest \
+**Testing:** Jest
 
 ## Features
 
@@ -18,13 +18,13 @@ Backend API for MYM Assessment which handles authentication, user data, and addi
 
 Local authentication using username and password \
 Google authentication using Google OAuth2.0 \
-Rate Limiting: Utilizes express-rate-limit for basic rate limiting. \
+Rate Limiting: Utilizes express-rate-limit for basic rate limiting.
 
 **Security:** Uses `helmet` for setting HTTP headers securely. \
 Utilizes `bcryptjs` for password hashing and verification. \
 **Logging:** Uses morgan for logging HTTP requests. \
 **Data Parsing:** `body-parser` for parsing incoming request bodies. \
-**Error Handling:** Custom error handling for 404 and other server errors. \
+**Error Handling:** Custom error handling for 404 and other server errors.
 
 ## Environment Variables
 
@@ -33,7 +33,7 @@ To run this project, you need to set up the following environment variables:
 GOOGLE_CLIENT_ID: Your Google OAuth2.0 client ID \
 GOOGLE_CLIENT_SECRET: Your Google OAuth2.0 client secret \
 SECRET: Secret key for session handling and JWT signing \
-MONGODB_URI: MongoDB connection string \
+MONGODB_URI: MongoDB connection string
 
 ## Local Development
 
@@ -58,7 +58,7 @@ Deployed on Vercel as a serverless function.
 POST /api/login - Login using local strategy. \
 POST /api/signup - Sign up for a new account. \
 GET /auth/google - Start Google OAuth2.0 authentication flow. \
-GET /auth/google/callback - Callback endpoint for Google OAuth2.0. \
+GET /auth/google/callback - Callback endpoint for Google OAuth2.0.
 
 ### Other:
 
@@ -68,7 +68,7 @@ GET /api/nasa-daily-image - Fetch daily image from NASA.
 
 Testing is a crucial part of this backend to ensure its reliability and stability. The tests have been written using Jest. To run the tests:
 
-`npm test` \
+`npm test`
 
 Ensure that you have set up the necessary environment for testing, including test databases if required.
 
