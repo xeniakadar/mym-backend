@@ -23,22 +23,10 @@ const indexRouter = require("../routes/index");
 const app = express();
 
 //database setup
-// check
 const mongoDb = process.env.MONGODB_URI;
 mongoose.connect(mongoDb, { useUnifiedTopology: true, useNewUrlParser: true });
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "mongo connection error"));
-
-// cors
-// const corsOptions = {
-//   origin: "http://127.0.0.1:5173/",
-//   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-//   credentials: true,
-//   allowedHeaders: ["Content-Type", "Authorization"],
-//   optionsSuccessStatus: 200,
-// };
-
-// app.use(cors(corsOptions));
 
 // general middleware
 app.use(compression());

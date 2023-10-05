@@ -14,12 +14,22 @@ router.post("/api/signup", user_controller.user_signup);
 
 router.get("/api/nasa-daily-image", nasa_controller.get_daily_image);
 
+router.get("/auth/google", (req, res, next) => {
+  console.log("Received request for /auth/google");
+  next();
+});
+
 router.get(
   "/auth/google",
   passport.authenticate("google", {
     scope: ["email", "profile"],
   }),
 );
+
+router.get("/auth/google/callback", (req, res, next) => {
+  console.log("Received request for /auth/google/callback");
+  next();
+});
 
 router.get(
   "/auth/google/callback",
