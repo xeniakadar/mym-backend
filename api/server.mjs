@@ -152,4 +152,13 @@ app.use(function (err, req, res, next) {
   res.render("error");
 });
 
+const server = express();
+
+server.all("*", (req, res) => {
+  const { pathname } = parse(req.url, true);
+  app.handle(req, res, { ...req, url: pathname });
+});
+
+export default server;
+
 module.exports = app;
