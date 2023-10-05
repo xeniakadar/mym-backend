@@ -70,6 +70,7 @@ app.use(
 );
 
 app.use(express.urlencoded({ extended: false }));
+
 // google OAUTH
 passport.use(
   new GoogleStrategy(
@@ -77,6 +78,7 @@ passport.use(
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       callbackURL: "http://127.0.0.1:5173/auth/google/callback",
+      passReqToCallback: true,
     },
     async (accessToken, refreshToken, profile, cb) => {
       let user = await User.findOne({ googleId: profile.id });
@@ -95,6 +97,63 @@ passport.use(
     },
   ),
 );
+
+//////////////
+
+const isLoggedIn = (req, res, next) => {
+  if (req.user) {
+    next();
+  } else {
+    res.sendStatus(401);
+  }
+};
+
+// Google Auth consent screen route
+app.get(
+  "/auth/google",
+  passport.authenticate("google", {
+    scope: ["email", "profile"],
+  }),
+);
+
+// Call back route
+app.get(
+  "/auth/google/callback",
+  passport.authenticate("google", {
+    failureRedirect: "/failed",
+  }),
+  function (req, res) {
+    res.redirect("/success");
+  },
+);
+
+// failed route if the authentication fails
+app.get("/failed", (req, res) => {
+  console.log("User is not authenticated");
+  res.send("Failed");
+});
+
+// Success route if the authentication is successful
+app.get("/success", isLoggedIn, (req, res) => {
+  console.log("You are logged in");
+  res.send(`Welcome ${req.user.displayName}`);
+});
+
+// Route that logs out the authenticated user
+app.get("/logout", (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      console.log("Error while destroying session:", err);
+    } else {
+      req.logout(() => {
+        console.log("You are logged out");
+        res.redirect("/home");
+      });
+    }
+  });
+});
+
+//////////////////
 
 // email/password
 passport.use(
